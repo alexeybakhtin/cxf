@@ -146,9 +146,9 @@ public class HttpsURLConnectionFactory {
 
             SSLContext ctx = provider == null ? SSLContext.getInstance(protocol) : SSLContext
                 .getInstance(protocol, provider);
-            ctx.getClientSessionContext().setSessionTimeout(tlsClientParameters.getSslCacheTimeout());
             ctx.init(tlsClientParameters.getKeyManagers(), tlsClientParameters.getTrustManagers(),
                      tlsClientParameters.getSecureRandom());
+            ctx.getClientSessionContext().setSessionTimeout(tlsClientParameters.getSslCacheTimeout());
 
             // The "false" argument means opposite of exclude.
             String[] cipherSuites = SSLUtils.getCiphersuites(tlsClientParameters.getCipherSuites(), SSLUtils
